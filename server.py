@@ -11,9 +11,8 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/', methods=['POST'])
 def upload_file():
-    if request.method == 'POST':
         file = request.files['file']
-        if file :
+        if file:
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return "File %s has been uploaded"%  filename
