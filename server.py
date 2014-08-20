@@ -8,9 +8,8 @@ app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/<hostname>/', methods=['POST'])
-def upload_file():
+def upload_file(hostname):
         file = request.files['file']
-        test = hostname
         if file:
             filename = secure_filename(file.filename)
             if   os.path.isdir(UPLOAD_FOLDER+hostname) == True:  
